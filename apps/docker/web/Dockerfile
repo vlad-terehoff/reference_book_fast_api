@@ -14,6 +14,8 @@ WORKDIR /app/web/
 
 COPY --from=requirements-stage /tmp/requirements.txt /code/requirements.txt
 
+RUN apt-get update && apt-get install -y libpq-dev python3-dev build-essential
+
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./apps/web/ .

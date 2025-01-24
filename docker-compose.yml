@@ -17,7 +17,7 @@ x-env: &env
 services:
   web-reference:
     <<: [*default-app, *env]
-    container_name: web-dis
+    container_name: web-reference
     ports:
       - "3330:8000"
     volumes:
@@ -31,10 +31,10 @@ services:
 
   db-reference:
     <<: *env
-    container_name: db-dis
+    container_name: db-reference
     image: postgis/postgis:16-3.5
     ports:
-      - "4525:5432"
+      - "4530:5432"
     networks:
       - app-net-dev
 
