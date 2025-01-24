@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "reference-book-fast-api"
+version = "0.1.0"
+description = ""
+authors = ["vlad-terehoff <tereh_off95@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.6"
+uvicorn = "^0.34.0"
+geoalchemy2 = "^0.17.0"
+shapely = "^2.0.6"
+alembic = "^1.14.1"
+sqlalchemy = "^2.0.37"
+asyncpg = "^0.30.0"
+pydantic = "^2.10.5"
+pydantic-settings = "^2.7.1"
+psycopg2 = "^2.9.10"
+psycopg2-binary = "^2.9.10"
+gunicorn = "^23.0.0"
+uvicorn-worker = "^0.3.0"
+postgis = "^1.0.4"
+sqladmin = {extras = ["full"], version = "^0.20.1"}
+pydantic-shapely = "^1.0.0a4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

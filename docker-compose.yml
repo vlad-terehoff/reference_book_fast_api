@@ -1,0 +1,51 @@
+networks:
+  app-net-dev:
+    driver: bridge
+    name: 'reference_book'
+
+x-app: &default-app
+  build:
+    dockerfile: apps/docker/web/Dockerfile
+
+  restart: unless-stopped
+
+x-env: &env
+  env_file:
+    - apps/web/.env
+
+
+services:
+  web-reference:
+    <<: [*default-app, *env]
+    container_name: web-dis
+    ports:
+      - "3330:8000"
+    volumes:
+      - ./apps/web/:/app/web/
+    depends_on:
+      - db-reference
+    networks:
+      - app-net-dev
+
+
+
+  db-reference:
+    <<: *env
+    container_name: db-dis
+    image: postgis/postgis:16-3.5
+    ports:
+      - "4525:5432"
+    networks:
+      - app-net-dev
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+
+    restart: unless-stopped
+
+
+volumes:
+  postgres_data:
+
+
