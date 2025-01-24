@@ -2,7 +2,7 @@ FROM python:3.12.2-slim as requirements-stage
 
 WORKDIR /tmp
 
-RUN pip install poetry --no-cache-dir poetry
+RUN pip install poetry poetry-plugin-export --no-cache-dir poetry
 
 COPY ./pyproject.toml ./poetry.lock* /tmp/
 
